@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+# ref: http://qiita.com/chezou/items/947900faef4c1032ed94
+
 def chipher(str)
   chiphed = ''
   str.split(//).each do |char|
