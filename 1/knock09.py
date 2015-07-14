@@ -18,19 +18,18 @@ input_text = u"I couldn't believe that I could actually understand what I was re
 
 
 def typoglycemia(string):
-  input_text_to_arr = input_text.split()
+	input_text_to_arr = input_text.split()
+	
+	for word in input_text_to_arr:
+		if len(word) >= 4:
+			top = word[0]
+			tail = word[-1]
+			text_list = list(word[1:-1])
+			random.shuffle(text_list)
+			print "%s%s%s" % (top, ''.join(text_list), tail),
+		
+		else:
+			print word,
 
-  for word in input_text_to_arr:
-    if len(word) >= 4:
-      top = word[0]
-      tail = word[-1]
-      text_list = list(word[1:-1])
-      random.shuffle(text_list)
-      print "%s%s%s" % (top, ''.join(text_list), tail),
-    
-    else:
-      print word,
-
-  return string
 
 typoglycemia(input_text)
