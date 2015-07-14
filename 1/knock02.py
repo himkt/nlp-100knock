@@ -13,6 +13,6 @@ str2 = u'タクシー'
 str3 = u''
 
 for i,j in zip(str1, str2):
-	str3 += i+j
+    str3 += i+j
 
 print str3

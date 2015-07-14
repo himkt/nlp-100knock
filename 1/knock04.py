@@ -18,11 +18,12 @@ array_string = string.split(" ")
 list_atom = []
 
 for word, index in zip(array_string, xrange(len(array_string))):
-	list_atom.append(word[0] if index+1 in (1, 5, 6, 7, 8, 9, 15, 16, 19) else word[0:2])
+
+    list_atom.append(word[0] if index+1 in (1, 5, 6, 7, 8, 9, 15, 16, 19) else word[0:2])
 	
-	#if index+1 in (1, 5, 6, 7, 8, 9, 15, 16, 19):
-	#	list_atom.append(word[0])
-	#else:
-	#	list_atom.append(word[0:2])
+    #if index+1 in (1, 5, 6, 7, 8, 9, 15, 16, 19):
+    #   list_atom.append(word[0])
+    #else:
+    #   list_atom.append(word[0:2])
 
 print list_atom
