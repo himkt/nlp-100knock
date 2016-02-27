@@ -28,11 +28,13 @@ def init():
     shuffle(res)
     return res
 
+
+def count(features):
+    pos_size = len(list(filter(lambda x: x[0] == '+', features)))
+    neg_size = len(features) - pos_size
+    return (pos_size, neg_size)
+
+
 if __name__ == '__main__':
     features = init()
-
-    neg_size = len(list(filter(lambda x: x[0] == '-', features)))
-    pos_size = len(features) - neg_size
-
-    print(pos_size)
-    print(neg_size)
+    print(count(features))

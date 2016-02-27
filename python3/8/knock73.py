@@ -22,7 +22,7 @@ def J(W, X, y):
 # sigmoid function
 def h(W, X):
     z = X.dot(W)
-    return 1 / (1 + exp(z))
+    return 1 / (1 + exp(-z))
 
 
 # compute gradient
@@ -31,8 +31,8 @@ def grad(W, X, y):
 
 
 # check if iteration is converged
-def check_convergence(W, W_tmp, X, y):
-    return abs(J(W, X, y)) - J(W_tmp, X, y) < 0.1
+def diff(W, W_tmp, X, y):
+    return abs(J(W, X, y)) - J(W_tmp, X, y)
 
 
 if __name__ == '__main__':
@@ -40,11 +40,8 @@ if __name__ == '__main__':
     X, y = vectorize(features)
     W = random(shape(X)[1]).reshape(shape(X)[1], 1)
 
-    for i in range(10):
+    for _ in range(1000):
         W_tmp = W
-        W = W + 0.01 * grad(W, X, y)
-
-        if check_convergence(W, W_tmp, X, y):
-            break
-
-    print(W)
+        W = W - 0.01 * grad(W, X, y)
+        
+        print(diff(W, W_tmp, X, y))
