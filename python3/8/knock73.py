@@ -32,7 +32,7 @@ def grad(W, X, y):
 
 # check if iteration is converged
 def diff(W, W_tmp, X, y):
-    return abs(J(W, X, y)) - J(W_tmp, X, y)
+    return abs(J(W, X, y) - J(W_tmp, X, y))
 
 
 if __name__ == '__main__':
@@ -43,5 +43,8 @@ if __name__ == '__main__':
     for _ in range(1000):
         W_tmp = W
         W = W - 0.01 * grad(W, X, y)
-        
-        print(diff(W, W_tmp, X, y))
+
+        if diff(W, W_tmp, X, y) < 0.1:
+            break
+
+    print(W)
