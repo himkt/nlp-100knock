@@ -3,7 +3,7 @@
 from knock70 import init
 from knock72 import vectorize
 from numpy import shape, exp, log
-from numpy.random import random
+from numpy.random import rand
 
 
 '''
@@ -38,12 +38,13 @@ def diff(W, W_tmp, X, y):
 if __name__ == '__main__':
     features = init()
     X, y = vectorize(features)
-    W = random(shape(X)[1]).reshape(shape(X)[1], 1)
+    W = rand(shape(X)[1], 1)
 
     for _ in range(1000):
         W_tmp = W
         W = W - 0.01 * grad(W, X, y)
 
+        print(diff(W, W_tmp, X, y))
         if diff(W, W_tmp, X, y) < 0.1:
             break
 
