@@ -17,9 +17,9 @@ def predict(W, X):
     return h(W, X)
 
 
-def evaluate(y_test, y_predict):
-    y_test_t = y_test > 0.5
-    y_predict_t = y_predict > 0.5
+def evaluate(y_test, y_predict, threshold):
+    y_test_t = y_test > threshold
+    y_predict_t = y_predict > threshold
     res = where((y_test_t == y_predict_t) == True)
     return len(res[0]) / len(y_test)
 
@@ -28,5 +28,7 @@ if __name__ == '__main__':
     X_train, y_train, X_test, y_test = vectorize(features)
     W = train(X_train, y_train)
 
-    predict_y = predict(W, X_test)
-    print(evaluate(y_test, predict_y))
+    predict_y = predict(W, X_train)
+    print(evaluate(y_train, predict_y, 0.7))
+    # predict_y = predict(W, X_test)
+    # print(evaluate(y_test, predict_y, 0.7))
