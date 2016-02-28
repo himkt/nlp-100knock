@@ -35,17 +35,17 @@ def diff(W, W_tmp, X, y):
     return abs(J(W, X, y) - J(W_tmp, X, y))
 
 
-if __name__ == '__main__':
-    features = init()
-    X, y = vectorize(features)
+def train(X, y):
     W = rand(shape(X)[1], 1)
-
     for _ in range(1000):
         W_tmp = W
         W = W - 0.01 * grad(W, X, y)
-
-        print(diff(W, W_tmp, X, y))
         if diff(W, W_tmp, X, y) < 0.1:
             break
+    return W
 
-    print(W)
+
+if __name__ == '__main__':
+    features = init()
+    X, y, X_, y_ = vectorize(features)
+    W = train(X, y)

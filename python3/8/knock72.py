@@ -4,6 +4,7 @@ from knock70 import init
 from knock71 import get_stopwords, contain_stop
 from sklearn.feature_extraction.text import CountVectorizer
 from numpy import array, shape
+from sklearn.cross_validation import train_test_split
 
 
 '''
@@ -26,13 +27,17 @@ def vectorize(features):
         y.append(1 if feature[0:2] == '+1' else 0)
         X.append(" ".join(list(filter(lambda x: not contain_stop(stopwords, x), feature[3:].split()))))
 
-    X = cv.fit_transform(X)
-    y = array([y]).T
-    return (X.toarray(), y)
+    cv.fit(X)
+    train_X_raw, test_X_raw, train_y, test_y = train_test_split(X, y, test_size=0.2)
+
+    train_X = cv.transform(train_X_raw)
+    test_X = cv.transform(test_X_raw)
+
+    return (train_X.toarray(), array([train_y]).T, test_X.toarray(), array([test_y]).T)
 
 
 if __name__ == '__main__':
     features = init()
-    X, y = vectorize(features)
-    print(X, y)
-    print(shape(X))
+    train_X, train_y, test_X, test_y = vectorize(features)
+    print(train_X, train_y)
+    print(shape(train_X))
