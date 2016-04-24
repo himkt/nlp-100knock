@@ -12,6 +12,21 @@ sh init.sh
 ```
 
 
+# Requirement
+
+- nkf
+- python2 ( >= 2.7)
+- python3 ( >=3.4)
+- ruby ( >= 2.2)
+
+# Libraries
+
+- nltk
+
+```
+python -e "import nltk; nltk.download('all')"
+```
+
 ---
 
 This repository is under developing.
