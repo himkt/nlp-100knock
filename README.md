@@ -1,6 +1,18 @@
 #nlp-100knock / 言語処理100本ノック
 
 
+# Setup
+
+If you want to run my code, you have to download dataset which nlp-100knock needs.
+
+Please run bellow command on the root of this repository.
+
+```
+sh init.sh
+```
+
+
+---
 
 This repository is under developing.
 
