@@ -13,7 +13,7 @@ pos_vector = Hash.new
 neg_vector = Hash.new
 stop_list = make_stop_list
 
-File.foreach('../data/sentiment.utf8.txt') do |line|
+File.foreach('../data/sentiment.txt') do |line|
   
   # 各行の先頭の'+1'or'-1'を取得する
   attr = line[0...2]

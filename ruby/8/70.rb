@@ -17,11 +17,11 @@ sentiment.txtを作成したら，正例（肯定的な文）の数と負例（�
 
 data = Array.new
 
-File.foreach('../data/rt-polaritydata/rt-polaritydata/rt-polarity.neg') do |line|
+File.foreach('../data/rt-polaritydata/rt-polarity.neg') do |line|
   data.push("-1 #{line.chomp}")
 end
 
-File.foreach('../data/rt-polaritydata/rt-polaritydata/rt-polarity.pos') do |line|
+File.foreach('../data//rt-polaritydata/rt-polarity.pos') do |line|
   data.push("+1 #{line.chomp}")
 end
 

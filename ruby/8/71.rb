@@ -24,7 +24,7 @@ def make_stop_list
   neg = Hash.new
 
 
-  File.foreach('../data/sentiment.utf8.txt') do |line|
+  File.foreach('../data/sentiment.txt') do |line|
 
     # 各行の先頭の'+1'or'-1'を取得する
     attr = line[0...2]
