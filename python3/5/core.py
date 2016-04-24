@@ -22,3 +22,6 @@ class Chunk(object):
 
     def __str__(self):
         return '<text: {0}, srcs: {1}, dst: {2}>'.format(self.get_text(), str(self.srcs), self.dst)
+
+    def get_text(self):
+        return "".join(m.surface for m in self.morphs if m.pos != '記号')
