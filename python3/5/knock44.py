@@ -14,7 +14,7 @@ from knock41 import parse
 
 if __name__ == '__main__':
     document = parse()
-    sentence = document[70]
+    sentence = document[7]
     print("digraph graphname {")
 
     for chunk in sentence:

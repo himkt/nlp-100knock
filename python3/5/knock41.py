@@ -34,10 +34,9 @@ def parse():
                     if chunk_id != -1:
                         chunk_list[chunk_id].srcs = srcs_local
 
-                if len(chunk_list) > 0:
-                    documents.append(chunk_list)
-                    chunk_list = []
-                    srcs = defaultdict(list)
+                documents.append(chunk_list)
+                chunk_list = []
+                srcs = defaultdict(list)
 
             elif line.startswith('* '):
                 _, chunk_id, dst, *_ = line.split()
