@@ -20,22 +20,23 @@ from knock41 import parse
 
 if __name__ == '__main__':
     document = parse()
-    # sentence = document[7]
+    sentence = document[7]
 
-    for sentence in document:
-        for chunk in sentence:
-            if '動詞' in [m.pos for m in chunk.morphs]:
+    # for sentence in document:
+    for chunk in sentence:
+        if '動詞' in [m.pos for m in chunk.morphs]:
 
-                # We treat least left verb as a predicate
-                predicate = [m.base for m in chunk.morphs if m.pos == '動詞'][0]
+            # We treat verb as a predicate
+            predicate = [m.base for m in chunk.morphs if m.pos == '動詞'][0]
+            arguments = []
 
-                case_list = []
-                for src in chunk.srcs:
-                    if '助詞' in [m.pos for m in sentence[src].morphs]:
-                        case = [m.base for m in sentence[
-                            src].morphs if m.pos == '助詞'][-1]
-                        case_list.append(case)
+            for src in chunk.srcs:
+                if '助詞' in [m.pos for m in sentence[src].morphs]:
+                    argument = sentence[src].get_text()
+                    case = [m.base for m in sentence[src].morphs if m.pos == '助詞'][-1]
+                    arguments.append((case, argument))
 
-                if len(case_list) > 0:
-                    case_list.sort()
-                    print('%s\t%s' % (predicate, ' '.join(case_list)))
+            if arguments:
+                arguments.sort()
+                print("%s\t%s\t%s" % (predicate, ' '.join([a[0] for a in arguments]), ' '.join([a[1] for a in arguments])))
+
