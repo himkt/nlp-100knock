@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
     for sentence in document:
         for chunk in sentence:
-            if chunk.dst is not None:
+            if chunk.dst != -1:
 
                 # I use the idea which github.com/lethe2211 implemented
                 if '名詞' in [m.pos for m in chunk.morphs] and '動詞' in [m.pos for m in sentence[chunk.dst].morphs]:

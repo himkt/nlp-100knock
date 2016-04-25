@@ -8,7 +8,6 @@
 """
 
 from knock41 import parse
-from core import Morph, Chunk
 
 
 if __name__ == '__main__':
@@ -17,5 +16,6 @@ if __name__ == '__main__':
     for sentence in document:
         for chunk in sentence:
             if chunk.dst is not None:
-
-                print("%s\t%s" % (chunk.get_text(), sentence[chunk.dst].get_text()))
+                if chunk.get_text() != '':
+                    if chunk.dst != -1:
+                        print("%s\t%s" % (chunk.get_text(), sentence[chunk.dst].get_text()))
