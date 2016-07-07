@@ -9,4 +9,4 @@ bundle
 # for python
 *.pyc
 
-/data
+data
