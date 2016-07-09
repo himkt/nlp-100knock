@@ -10,3 +10,5 @@ bundle
 *.pyc
 
 data
+
+*.txt

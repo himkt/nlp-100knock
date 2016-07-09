@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+
+gem 'iruby'
+gem 'rbczmq'
+gem 'numo-narray', :git => 'git@github.com:ruby-numo/narray.git'

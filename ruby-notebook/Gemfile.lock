@@ -1,0 +1,30 @@
+GIT
+  remote: git@github.com:ruby-numo/narray.git
+  revision: 7d920f48f2f8efc84abef084777acf5b434a0dc7
+  specs:
+    numo-narray (0.9.0.2)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bond (0.5.1)
+    data_uri (0.1.0)
+    iruby (0.2.9)
+      bond (~> 0.5)
+      data_uri (~> 0.1)
+      mimemagic (~> 0.3)
+      multi_json (~> 1.11)
+    mimemagic (0.3.1)
+    multi_json (1.12.1)
+    rbczmq (1.7.9)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  iruby
+  numo-narray!
+  rbczmq
+
+BUNDLED WITH
+   1.12.5
