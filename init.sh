@@ -20,3 +20,6 @@ nkf -w data/rt-polaritydata/rt-polarity.neg > data/rt-polaritydata/rt-polarity.n
 
 mv data/rt-polaritydata/rt-polarity.pos.utf8 data/rt-polaritydata/rt-polarity.pos
 mv data/rt-polaritydata/rt-polarity.neg.utf8 data/rt-polaritydata/rt-polarity.neg
+
+wget http://www.cl.ecei.tohoku.ac.jp/nlp100/data/enwiki-20150112-400-r10-105752.txt.bz2 -P data
+bunzip2 data/enwiki-20150112-400-r10-105752.txt.bz2
