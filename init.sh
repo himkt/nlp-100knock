@@ -23,3 +23,6 @@ mv data/rt-polaritydata/rt-polarity.neg.utf8 data/rt-polaritydata/rt-polarity.ne
 
 wget http://www.cl.ecei.tohoku.ac.jp/nlp100/data/enwiki-20150112-400-r10-105752.txt.bz2 -P data
 bunzip2 data/enwiki-20150112-400-r10-105752.txt.bz2
+
+wget http://www.cl.ecei.tohoku.ac.jp/nlp100/data/enwiki-20150112-400-r100-10576.txt.bz2 -P data
+bunzip2 data/enwiki-20150112-400-r100-10576.txt.bz2
