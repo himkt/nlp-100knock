@@ -1,8 +1,0 @@
-source 'https://rubygems.org'
-
-gem 'statsample-glm'
-gem 'iruby'
-gem 'rbczmq'
-gem 'daru'
-gem 'countries'
-gem 'numo-narray', :git => 'git@github.com:ruby-numo/narray.git'
