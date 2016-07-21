@@ -37,7 +37,11 @@ def diff(W, W_tmp, X, y):
 
 def train(X, y):
     W = rand(shape(X)[1], 1)
-    for _ in range(1000):
+    for t in range(1000):
+        if t % 5 == 0:
+            print(t)
+            print(J(W, X, y))
+
         W_tmp = W
         W = W - 0.01 * grad(W, X, y)
         if diff(W, W_tmp, X, y) < 0.1:
