@@ -16,6 +16,7 @@ gem install narray
 IRubyのカーネルが死んだりしてしんどい．環境構築は以下のコマンドをつかってやってる． (ref: http://104.155.147.108/user/3655a5b7ef32a67dbfe3a1c8d24bbe01/edit/Dockerfile thanks to @kozo2)
 
 ```
+git clone git://github.com/ruby-numo/narray; git clone git://github.com/ruby-numo/linalg; 
 gem update --no-document --system
 gem install --no-document bundler daru iruby nyaplot pry rbczmq
 cd narray
