@@ -56,11 +56,21 @@ end
 if __FILE__ == $0
   cv, y = knock72
   x = cv.doc_matrix
-
   x_train, y_train, x_test, y_test = CrossValidation.train_test_split(x, y, 0.7).map(&:dup)
 
-  model = LogisticRegressionModel.new
-  model.fit(x_train, y_train)
+  # model = LogisticRegressionModel.new
+  # model.fit(x_train, y_train)
+  #
+  # puts "test accuracy: #{model.score(x_test, y_test)}"
 
-  puts "test accuracy: #{model.score(x_test, y_test)}"
+
+  require 'liblinear'
+  # train
+  model = Liblinear.train(
+    { solver_type: Liblinear::L2R_LR },
+    y_train.to_a.map{|a| a[0]},
+    x_train.to_a,
+  )
+  # predict
+  puts Liblinear.predict(model, x_train.to_a.map{|a| a[0]}) # predicted class will be 1
 end
