@@ -26,8 +26,13 @@ class LogisticRegressionModel
 
 
   def predict(x)
-    probabilities = x.dot(@w)
+    probabilities = h(x)
     return probabilities > @threshold
+  end
+
+
+  def predict_prob(x)
+    return h(x)
   end
 
 
