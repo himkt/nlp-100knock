@@ -31,3 +31,10 @@ wget https://storage.googleapis.com/google-code-archive-source/v2/code.google.co
 unzip data/source-archive.zip -d data
 mv data/word2vec/trunk/questions-words.txt data/questions-words.txt
 rm -rf data/word2vec data/source-archive.zip*
+
+wget http://www.cs.technion.ac.il/~gabr/resources/data/wordsim353/wordsim353.zip -P data
+unzip data/wordsim353.zip -d data
+rm data/set*.csv
+rm data/set*.tab
+rm data/combined.csv
+mv data/combined.tab data/combined.tsv
