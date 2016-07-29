@@ -1,6 +1,6 @@
 require './knock72.rb'
 require 'numo/narray'
-require './CrossValidation.rb'
+require 'rblearn'
 
 
 class LogisticRegressionModel
@@ -56,7 +56,7 @@ end
 if __FILE__ == $0
   cv, y = knock72
   x = cv.doc_matrix
-  x_train, y_train, x_test, y_test = CrossValidation.train_test_split(x, y, 0.7).map(&:dup)
+  x_train, y_train, _, _ = Rblearn::CrossValidation.train_test_split(x, y, 0.7).map(&:dup)
 
   # model = LogisticRegressionModel.new
   # model.fit(x_train, y_train)
