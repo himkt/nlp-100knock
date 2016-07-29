@@ -1,6 +1,6 @@
 require 'countries'
 require 'numo/narray'
-require '../chapter9/knock87.rb'
+require '../chapter09/knock87.rb'
 
 countries = ISO3166::Country.all.map{|obj| obj.name.gsub(/\s/, '_')}
 token2id, _, mat = Marshal.load(open('../../data/knock90.dump', 'rb'))

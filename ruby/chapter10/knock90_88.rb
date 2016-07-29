@@ -1,6 +1,6 @@
 require 'numo/narray'
-require '../chapter9/knock87.rb'
-require '../chapter9/knock88.rb'
+require '../chapter09/knock87.rb'
+require '../chapter09/knock88.rb'
 
 
 if __FILE__ == $0

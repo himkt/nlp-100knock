@@ -1,4 +1,4 @@
-require '../chapter9/knock87.rb'
+require '../chapter09/knock87.rb'
 require 'numo/narray'
 
 if __FILE__ == $0
