@@ -19,13 +19,13 @@ class LogisticRegressionModel
 
 
   def fit(x, y)
-    @w = Numo::Float64.zeros([x.shape[1], 1])
-    # @w = Numo::Float64.new([x.shape[1], 1]).rand
-    10.times do |t|
+    # @w = Numo::Float64.zeros([x.shape[1], 1])
+    @w = Numo::Float64.new([x.shape[1], 1]).rand
+    30.times do |t|
 
       # p y-h(x)
       # NOTE: there is something bug
-      @w = @w - @eta * x.transpose.dup.dot(y - h(x)) # x.T.dot(h(x) - y): gradient
+      @w = @w - @eta * x.transpose.dup.dot(h(x) - y) # x.T.dot(h(x) - y): gradient
       puts "#iter: #{t}, accuracy: #{score(x, y)}"
     end
   end
@@ -62,9 +62,9 @@ end
 if __FILE__ == $0
   cv, y = knock72
   x = cv.doc_matrix
-  x_train, y_train, x_test, y_test = Rblearn::CrossValidation.train_test_split(x, y, 0.7).map(&:dup)
+  x_train, y_train, x_test, y_test = Rblearn::CrossValidation.train_test_split(x, y, 0.5).map(&:dup)
 
-  model = LogisticRegressionModel.new(0.2, 0.5)
+  model = LogisticRegressionModel.new(0.02, 0.7)
   model.fit(x_train, y_train)
 
   puts "test accuracy: #{model.score(x_test, y_test)}"

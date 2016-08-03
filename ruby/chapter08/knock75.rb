@@ -10,7 +10,7 @@ if __FILE__ == $0
   model = LogisticRegressionModel.new(0.1, 0.5)
   model.fit(x_train, y_train)
   
-  feature_names = cv.feature_names
+  feature_names = cv.get_feature_names
   weights = model.w.to_a.map{|arr| arr[0]}
   name_weights = {}
 
