@@ -14,7 +14,7 @@ def knock72
     features << feature
   end
 
-  cv = Rblearn::CountVectorizer.new(lambda{|feature| feature.split.map(&:stem)}, 1, 0.7)
+  cv = Rblearn::CountVectorizer.new(lambda{|feature| feature.split.map(&:stem).map(&:downcase)}, 1, 0.7)
   cv.fit_transform(features)
 
   y = Numo::Int8.zeros([labels.size, 1])

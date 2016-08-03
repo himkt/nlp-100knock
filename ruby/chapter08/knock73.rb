@@ -4,9 +4,11 @@ require 'rblearn'
 
 
 class LogisticRegressionModel
-  def initialize
-    @eta = 0.01
-    @threshold = 0.7
+  attr_accessor :w
+
+  def initialize(eta, threshold)
+    @eta = eta
+    @threshold = threshold
   end
   
   
@@ -17,8 +19,12 @@ class LogisticRegressionModel
 
 
   def fit(x, y)
-    @w = Numo::Float64.new([x.shape[1], 1]).rand * 10
+    @w = Numo::Float64.zeros([x.shape[1], 1])
+    # @w = Numo::Float64.new([x.shape[1], 1]).rand
     10.times do |t|
+
+      # p y-h(x)
+      # NOTE: there is something bug
       @w = @w - @eta * x.transpose.dup.dot(y - h(x)) # x.T.dot(h(x) - y): gradient
       puts "#iter: #{t}, accuracy: #{score(x, y)}"
     end
@@ -56,21 +62,21 @@ end
 if __FILE__ == $0
   cv, y = knock72
   x = cv.doc_matrix
-  x_train, y_train, _, _ = Rblearn::CrossValidation.train_test_split(x, y, 0.7).map(&:dup)
+  x_train, y_train, x_test, y_test = Rblearn::CrossValidation.train_test_split(x, y, 0.7).map(&:dup)
 
-  # model = LogisticRegressionModel.new
-  # model.fit(x_train, y_train)
-  #
-  # puts "test accuracy: #{model.score(x_test, y_test)}"
+  model = LogisticRegressionModel.new(0.2, 0.5)
+  model.fit(x_train, y_train)
+
+  puts "test accuracy: #{model.score(x_test, y_test)}"
 
 
-  require 'liblinear'
-  # train
-  model = Liblinear.train(
-    { solver_type: Liblinear::L2R_LR },
-    y_train.to_a.map{|a| a[0]},
-    x_train.to_a,
-  )
-  # predict
-  puts Liblinear.predict(model, x_train.to_a.map{|a| a[0]}) # predicted class will be 1
+  # require 'liblinear'
+  # # train
+  # model = Liblinear.train(
+  #   { solver_type: Liblinear::L2R_LR },
+  #   y_train.to_a.map{|a| a[0]},
+  #   x_train.to_a,
+  # )
+  # # predict
+  # puts Liblinear.predict(model, x_train.to_a.map{|a| a[0]}) # predicted class will be 1
 end

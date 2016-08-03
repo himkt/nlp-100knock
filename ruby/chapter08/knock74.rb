@@ -7,8 +7,8 @@ if __FILE__ == $0
 
   x_train, y_train, x_test, y_test = Rblearn::CrossValidation.train_test_split(x, y, 0.7).map(&:dup)
 
-  model = LogisticRegressionModel.new
+  model = LogisticRegressionModel.new(0.1, 0.5)
   model.fit(x_train, y_train)
 
-  puts model.predict_prob(x_test).to_a
+  puts model.predict(x_test).to_a
 end
