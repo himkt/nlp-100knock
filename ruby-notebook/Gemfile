@@ -1,0 +1,15 @@
+source 'https://rubygems.org'
+
+gem 'iruby'
+gem 'rbczmq'
+gem 'ruby-stemmer'
+gem 'daru'
+gem 'nmatrix'
+gem 'stopwords'
+gem 'statsample-glm'
+gem 'rblearn'
+gem 'countries'
+gem 'nyaplot'
+
+gem 'numo-narray', :git => 'git@github.com:ruby-numo/narray.git'
+# gem 'numo-linalg', :git => 'git@github.com:ruby-numo/linalg.git'
