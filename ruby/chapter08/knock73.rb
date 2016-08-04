@@ -26,7 +26,7 @@ class LogisticRegressionModel
       # p y-h(x)
       # NOTE: there is something bug
       @w = @w - @eta * x.transpose.dup.dot(h(x) - y) # x.T.dot(h(x) - y): gradient
-      puts "#iter: #{t}, accuracy: #{score(x, y)} loss: #{loss(x, y)}"
+      puts "#iter: #{t}, accuracy: #{score(x, y)} loss: #{loss(x, y)}" if t % 5 == 0
     end
   end
 
