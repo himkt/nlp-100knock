@@ -21,12 +21,12 @@ class LogisticRegressionModel
   def fit(x, y)
     # @w = Numo::Float64.zeros([x.shape[1], 1])
     @w = Numo::Float64.new([x.shape[1], 1]).rand
-    30.times do |t|
+    60.times do |t|
 
       # p y-h(x)
       # NOTE: there is something bug
       @w = @w - @eta * x.transpose.dup.dot(h(x) - y) # x.T.dot(h(x) - y): gradient
-      puts "#iter: #{t}, accuracy: #{score(x, y)}"
+      puts "#iter: #{t}, accuracy: #{score(x, y)} loss: #{loss(x, y)}"
     end
   end
 
@@ -51,9 +51,17 @@ class LogisticRegressionModel
 
     num_correct = 0
     num_data.times do |t|
-      num_correct += 1 if py[t] == ry[t]
+      num_correct += 1 if (py[t] == ry[t])
     end
+
     return num_correct.to_f / num_data
+  end
+
+
+  def loss(x, y)
+    a = - Numo::NMath.log(h(x)).transpose.dot(y)[0, 0]
+    b = - Numo::NMath.log(1-h(x)).transpose.dot(1-y)
+    (a + b)[0, 0]
   end
 end
 
@@ -62,9 +70,9 @@ end
 if __FILE__ == $0
   cv, y = knock72
   x = cv.doc_matrix
-  x_train, y_train, x_test, y_test = Rblearn::CrossValidation.train_test_split(x, y, 0.5).map(&:dup)
+  x_train, y_train, x_test, y_test = Rblearn::CrossValidation.train_test_split(x, y, 0.3).map(&:dup)
 
-  model = LogisticRegressionModel.new(0.02, 0.7)
+  model = LogisticRegressionModel.new(0.01, 0.5)
   model.fit(x_train, y_train)
 
   puts "test accuracy: #{model.score(x_test, y_test)}"
