@@ -1,8 +1,0 @@
-source 'https://rubygems.org'
-
-gem 'natto'
-gem 'gnuplot'
-gem 'stemmify'
-gem 'redis'
-gem 'rblearn'
-gem 'numo-narray', :git => 'git@github.com:ruby-numo/narray.git'

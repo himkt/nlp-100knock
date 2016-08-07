@@ -11,6 +11,18 @@ Please run bellow command on the root of this repository.
 sh init.sh
 ```
 
+And if you want to execute scripts in ruby or ruby-notebook, please run
+
+```
+bundle install
+```
+
+All ruby scripts are runed by this command
+
+```
+bundle exec ruby
+```
+
 
 # Requirement
 
